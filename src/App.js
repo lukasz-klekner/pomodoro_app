@@ -23,7 +23,7 @@ function App() {
       </div>
       <div className='Timebox'>
         <h1>Uczę się Reacta</h1>
-        <Clock hours={0} minutes={7} seconds={0} miliseconds={1000} />
+        <Clock hours={27} minutes={700} seconds={120} miliseconds={1000} />
         <div className='ProgressBar inactive'>
           <div style={{ width: '45%' }}></div>
         </div>

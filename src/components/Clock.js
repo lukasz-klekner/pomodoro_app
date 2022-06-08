@@ -1,7 +1,12 @@
-import { convertTime } from '../utils/time'
+import { clamp, prefixWithZeros } from '../utils/helpers'
 
 const Clock = ({ hours, minutes, seconds, miliseconds }) => {
-  const time = convertTime(hours, minutes, seconds, miliseconds)
+  const time = {
+    hours: prefixWithZeros(clamp(0, hours, 23), 2),
+    minutes: prefixWithZeros(clamp(0, minutes, 59), 2),
+    seconds: prefixWithZeros(clamp(0, seconds, 59), 2),
+    miliseconds: prefixWithZeros(clamp(0, miliseconds, 999), 3),
+  }
 
   return (
     <h2 className='Clock'>
