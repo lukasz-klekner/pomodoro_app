@@ -9,8 +9,8 @@ function App() {
       <hr />
       <div className='App'>
         <TimeboxEditor />
+        <Timebox />
       </div>
-      <Timebox />
     </div>
   )
 }
