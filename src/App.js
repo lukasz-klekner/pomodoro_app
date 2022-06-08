@@ -1,6 +1,8 @@
 import Clock from './components/Clock'
 
 import './App.css'
+import ProgressBar from './components/ProgressBar'
+
 function App() {
   return (
     <div>
@@ -24,9 +26,7 @@ function App() {
       <div className='Timebox'>
         <h1>Uczę się Reacta</h1>
         <Clock hours={27} minutes={700} seconds={120} miliseconds={1000} />
-        <div className='ProgressBar inactive'>
-          <div style={{ width: '45%' }}></div>
-        </div>
+        <ProgressBar percent={25} />
         <button>Start</button>
         <button>Stop</button>
         <button>Pauzuj</button>
