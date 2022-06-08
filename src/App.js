@@ -1,3 +1,5 @@
+import Clock from './components/Clock'
+
 import './App.css'
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
       </div>
       <div className='Timebox'>
         <h1>Uczę się Reacta</h1>
-        <h2 className='Clock'>Pozostało 15:15</h2>
+        <Clock hours={0} minutes={7} seconds={0} miliseconds={1000} />
         <div className='ProgressBar inactive'>
           <div style={{ width: '45%' }}></div>
         </div>
