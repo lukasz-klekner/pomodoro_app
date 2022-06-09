@@ -1,6 +1,6 @@
-const ProgressBar = ({ percent, trackRemaining = false }) => (
+const ProgressBar = ({ className, percent, trackRemaining = false }) => (
   <div
-    className='ProgressBar'
+    className={`ProgressBar ${className}`}
     style={{
       display: 'flex',
       justifyContent: trackRemaining ? 'flex-end' : 'flex-start',
