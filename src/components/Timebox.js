@@ -21,12 +21,18 @@ const Timebox = () => {
     (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0
 
   const startTimer = () => {
+    if (intervalId) return
+
     intervalId = window.setInterval(() => {
       setelapsedTimeInMiliseconds((prevState) => prevState + 10)
     }, 10)
   }
 
-  const stopTimer = () => window.clearInterval(intervalId)
+  const stopTimer = () => {
+    window.clearInterval(intervalId)
+
+    intervalId = null
+  }
 
   const handleStart = () => {
     setIsRunning(true)
