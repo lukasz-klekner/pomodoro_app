@@ -2,13 +2,11 @@ import { useState } from 'react'
 
 const TimeboxEditor = () => {
   const [title, setTitle] = useState('')
-  const [totalTimeInMiliseconds, setTotalTimeInMiliseconds] = useState('')
+  const [totalTimeInMinutes, settotalTimeInMinutes] = useState('')
 
   const handleTitleChange = (event) => setTitle(event.target.value)
-  const handleTotalTimeInMilisecondsChange = (event) =>
-    setTotalTimeInMiliseconds(Number(event.target.value))
-
-  console.log(totalTimeInMiliseconds)
+  const handletotalTimeInMinutesChange = (event) =>
+    settotalTimeInMinutes(Number(event.target.value))
 
   return (
     <div className='TimeboxEditor'>
@@ -21,8 +19,8 @@ const TimeboxEditor = () => {
         Ile minut?
         <input
           type='number'
-          value={totalTimeInMiliseconds}
-          onChange={handleTotalTimeInMilisecondsChange}
+          value={totalTimeInMinutes}
+          onChange={handletotalTimeInMinutesChange}
         />
       </label>
       <br />
