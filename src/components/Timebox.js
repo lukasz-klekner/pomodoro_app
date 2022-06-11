@@ -5,7 +5,7 @@ import ProgressBar from './ProgressBar'
 
 let intervalId = null
 
-const Timebox = ({ title, totalTimeInMinutes }) => {
+const Timebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
   const [elapsedTimeInMiliseconds, setelapsedTimeInMiliseconds] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
@@ -73,7 +73,7 @@ const Timebox = ({ title, totalTimeInMinutes }) => {
   }, [elapsedTimeInMiliseconds, totalTimeInMiliseconds])
 
   return (
-    <div className='Timebox'>
+    <div className={`Timebox ${isEditable ? 'inactive' : ''}`}>
       <h1>{title}</h1>
       <Clock
         className={isPaused ? 'inactive' : ''}
@@ -85,6 +85,9 @@ const Timebox = ({ title, totalTimeInMinutes }) => {
         className={isPaused ? 'inactive' : ''}
         percent={progressInPercent}
       />
+      <button disabled={isEditable} onClick={onEdit}>
+        Edytuj
+      </button>
       <button disabled={isRunning !== isPaused} onClick={handleStart}>
         Start
       </button>
