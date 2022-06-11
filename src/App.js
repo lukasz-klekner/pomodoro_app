@@ -1,16 +1,13 @@
 import './App.css'
-import Timebox from './components/Timebox'
-import TimeboxEditor from './components/TimeboxEditor'
+
+import EditableTimebox from './components/EditableTimebox'
 
 function App() {
   return (
     <div>
       <h1>Pomodoro App</h1>
       <hr />
-      <div className='App'>
-        <TimeboxEditor />
-        <Timebox />
-      </div>
+      <EditableTimebox />
     </div>
   )
 }

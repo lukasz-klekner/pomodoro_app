@@ -5,13 +5,13 @@ import ProgressBar from './ProgressBar'
 
 let intervalId = null
 
-const Timebox = () => {
+const Timebox = ({ title, totalTimeInMinutes }) => {
   const [elapsedTimeInMiliseconds, setelapsedTimeInMiliseconds] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [pausesCount, setPausesCount] = useState(0)
 
-  const totalTimeInMiliseconds = 30 * 1000
+  const totalTimeInMiliseconds = Number(totalTimeInMinutes) * 60 * 1000
   const timeLeftInMiliseconds =
     totalTimeInMiliseconds - elapsedTimeInMiliseconds
   const minutesLeft = Math.floor(timeLeftInMiliseconds / (60 * 1000))
@@ -74,7 +74,7 @@ const Timebox = () => {
 
   return (
     <div className='Timebox'>
-      <h1>Uczę się Reacta</h1>
+      <h1>{title}</h1>
       <Clock
         className={isPaused ? 'inactive' : ''}
         miliseconds={milisecondsLeft}
