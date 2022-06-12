@@ -26,8 +26,8 @@ const TimeboxList = () => {
       )
     )
 
-  const handleCreate = () => {
-    addTimebox({ id: v4(), title: 'nowy timebox', totalTimeInMinutes: '2' })
+  const handleCreate = ({ title, totalTimeInMinutes }) => {
+    addTimebox({ id: v4(), title, totalTimeInMinutes })
   }
 
   return (
