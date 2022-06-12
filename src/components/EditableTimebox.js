@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Timebox from './Timebox'
+import CurrentTimebox from './CurrentTimebox'
 import TimeboxEditor from './TimeboxEditor'
 
 const EditableTimebox = () => {
@@ -27,7 +27,7 @@ const EditableTimebox = () => {
         title={title}
         totalTimeInMinutes={totalTimeInMinutes}
       />
-      <Timebox
+      <CurrentTimebox
         isEditable={isEditable}
         onEdit={handleEdit}
         title={title}
