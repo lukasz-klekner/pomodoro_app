@@ -82,7 +82,9 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
         seconds={secondsLeft}
       />
       <ProgressBar
+        big
         className={isPaused ? 'inactive' : ''}
+        color='green'
         percent={progressInPercent}
       />
       <button disabled={isEditable} onClick={onEdit}>
