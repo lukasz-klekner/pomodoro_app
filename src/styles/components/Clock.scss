@@ -1,3 +1,12 @@
-.Clock {
-  color: orangered;
+.clock {
+  font-size: 20px;
+
+  &__face {
+    letter-spacing: spacing(0.5);
+    color: $green-color;
+  }
+
+  &__colon {
+    color: $green-color;
+  }
 }

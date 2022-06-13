@@ -9,7 +9,11 @@ const Clock = ({ className, miliseconds, minutes, seconds }) => {
 
   return (
     <h2 className={`Clock ${className}`}>
-      Pozostało {time.minutes}:{time.seconds}:{time.miliseconds}
+      Pozostało <span className='clock__face'>{time.minutes}</span>
+      <span className='clock__colon'>:</span>
+      <span className='clock__face'>{time.seconds}</span>
+      <span className='clock__colon'>:</span>
+      <span className='clock__face'>{time.miliseconds}</span>
     </h2>
   )
 }
