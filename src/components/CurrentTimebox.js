@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import classNames from 'classnames'
 
 import Clock from './Clock'
 import ProgressBar from './ProgressBar'
@@ -10,6 +11,10 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [pausesCount, setPausesCount] = useState(0)
+
+  const currentTimeboxClassNames = classNames('CurrentTimebox', {
+    inactive: isEditable,
+  })
 
   const totalTimeInMiliseconds = Number(totalTimeInMinutes) * 60 * 1000
   const timeLeftInMiliseconds =
@@ -73,7 +78,7 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
   }, [elapsedTimeInMiliseconds, totalTimeInMiliseconds])
 
   return (
-    <div className={`CurrentTimebox ${isEditable ? 'inactive' : ''}`}>
+    <div className={currentTimeboxClassNames}>
       <h1>{title}</h1>
       <Clock
         className={isPaused ? 'inactive' : ''}
