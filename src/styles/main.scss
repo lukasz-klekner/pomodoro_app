@@ -7,6 +7,7 @@
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
+  background-color: #ffaaaa;
 }
 
 .TimeboxEditor,
@@ -16,6 +17,14 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
+}
+
+.TimeboxCreator {
+  background-color: aqua;
+}
+
+.TimeboxEditor {
+  background-color: aquamarine;
 }
 
 input {
@@ -34,6 +43,7 @@ button {
   border-radius: 5px;
   padding: 20px;
   text-align: center;
+  background-color: #ffffaa;
 }
 
 .Clock {
