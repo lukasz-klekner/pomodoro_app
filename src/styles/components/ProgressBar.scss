@@ -1,12 +1,24 @@
-.ProgressBar {
-  border: 1px solid $progress-bar-color;
+.progress {
+  border: 1px solid $progress-bar-default-color;
   border-radius: $border-radius;
   height: 25px;
   margin-bottom: spacing(5);
   padding: spacing(1.5);
 
-  > div {
+  &--big {
+    height: 50px;
+  }
+
+  &--color-red {
+    border-color: $progress-bar-color;
+  }
+
+  &__bar {
     height: 100%;
-    background-color: $progress-bar-color;
+    background-color: $progress-bar-default-color;
+
+    &--color-green {
+      background-color: green;
+    }
   }
 }
