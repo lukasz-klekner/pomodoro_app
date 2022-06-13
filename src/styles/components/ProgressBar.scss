@@ -2,8 +2,8 @@
   border: 1px solid $progress-bar-color;
   border-radius: $border-radius;
   height: 25px;
-  margin-bottom: 20px;
-  padding: 5px;
+  margin-bottom: spacing(5);
+  padding: spacing(1.5);
 
   > div {
     height: 100%;

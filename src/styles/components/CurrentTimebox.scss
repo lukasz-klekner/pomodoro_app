@@ -1,7 +1,7 @@
 .CurrentTimebox {
   border: $border-default;
   border-radius: $border-radius;
-  padding: 20px;
+  padding: spacing(5);
   text-align: center;
   background-color: $current-timebox-bg;
 }

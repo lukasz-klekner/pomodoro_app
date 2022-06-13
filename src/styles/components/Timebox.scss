@@ -1,7 +1,7 @@
 .Timebox {
   border: $border-default;
   border-radius: $border-radius;
-  padding: 5px;
-  margin-bottom: 10px;
+  padding: spacing(1);
+  margin-bottom: spacing(2.5);
   background-color: $timebox-bg;
 }
