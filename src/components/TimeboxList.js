@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material'
 import { useState } from 'react'
 import { v4 } from 'uuid'
 
@@ -60,31 +61,35 @@ const TimeboxList = () => {
   return (
     <>
       <TimeboxEditor onCreate={handleCreate} />
-      {timeboxes.map(({ id, title, totalTimeInMinutes }, index) =>
-        editedTimeboxId === id ? (
-          <TimeboxEditor
-            key={id}
-            isEditable
-            title={editedTimeboxTitle}
-            totalTimeInMinutes={editedTimeboxTotalTimeInMinutes}
-            onConfirm={handleConfirm}
-            onTitleChange={handleTitleChange}
-            onTotalTimeInMinutesChange={handleTotalTimeInMinutesChange}
-          />
-        ) : (
-          <Timebox
-            key={id}
-            title={title}
-            totalTimeInMinutes={totalTimeInMinutes}
-            onDelete={() => removeTimebox(index)}
-            onEdit={() => {
-              setEditedTimeboxId(id)
-              setEditedTimeboxTitle(title)
-              setEditedTimeboxTotalTimeInMinutes(totalTimeInMinutes)
-            }}
-          />
-        )
-      )}
+      <Grid container columnSpacing={1}>
+        {timeboxes.map(({ id, title, totalTimeInMinutes }, index) =>
+          editedTimeboxId === id ? (
+            <TimeboxEditor
+              key={id}
+              isEditable
+              title={editedTimeboxTitle}
+              totalTimeInMinutes={editedTimeboxTotalTimeInMinutes}
+              onConfirm={handleConfirm}
+              onTitleChange={handleTitleChange}
+              onTotalTimeInMinutesChange={handleTotalTimeInMinutesChange}
+            />
+          ) : (
+            <Grid item xs={3}>
+              <Timebox
+                key={id}
+                title={title}
+                totalTimeInMinutes={totalTimeInMinutes}
+                onDelete={() => removeTimebox(index)}
+                onEdit={() => {
+                  setEditedTimeboxId(id)
+                  setEditedTimeboxTitle(title)
+                  setEditedTimeboxTotalTimeInMinutes(totalTimeInMinutes)
+                }}
+              />
+            </Grid>
+          )
+        )}
+      </Grid>
     </>
   )
 }
