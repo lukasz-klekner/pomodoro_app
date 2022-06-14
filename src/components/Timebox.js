@@ -1,7 +1,18 @@
+import styled from '@emotion/styled'
+import { Card } from '@mui/material'
 import Button from './Button'
 
+const StyledCard = styled(Card)`
+  max-width: 400px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 4px;
+  margin-bottom: 10px;
+  background-color: #ffaaaa;
+`
+
 const Timebox = ({ title, totalTimeInMinutes, onDelete, onEdit }) => (
-  <div className='Timebox'>
+  <StyledCard>
     <h3>
       {title} - {totalTimeInMinutes}
       <br />
@@ -10,7 +21,7 @@ const Timebox = ({ title, totalTimeInMinutes, onDelete, onEdit }) => (
         Zmień
       </Button>
     </h3>
-  </div>
+  </StyledCard>
 )
 
 export default Timebox
