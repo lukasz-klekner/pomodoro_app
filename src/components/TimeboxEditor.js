@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 
+import Button from './Button'
+
 const TimeboxEditor = ({
   isEditable,
   onConfirm,
@@ -34,9 +36,9 @@ const TimeboxEditor = ({
         />
       </label>
       <br />
-      <button disabled={!isEditable} onClick={onConfirm}>
+      <Button disabled={!isEditable} onClick={onConfirm}>
         Zatwierdź zmiany!
-      </button>
+      </Button>
     </div>
   )
 }
