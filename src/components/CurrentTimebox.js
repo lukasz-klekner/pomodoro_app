@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 
+import Button from './Button'
 import Clock from './Clock'
 import ProgressBar from './ProgressBar'
 
@@ -92,18 +93,22 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
         color='green'
         percent={progressInPercent}
       />
-      <button disabled={isEditable} onClick={onEdit}>
+      <Button disabled={isEditable} onClick={onEdit}>
         Edytuj
-      </button>
-      <button disabled={isRunning !== isPaused} onClick={handleStart}>
+      </Button>
+      <Button
+        disabled={isRunning !== isPaused}
+        onClick={handleStart}
+        variant='secondary'
+      >
         Start
-      </button>
-      <button disabled={!isRunning} onClick={handleStop}>
+      </Button>
+      <Button disabled={!isRunning} onClick={handleStop}>
         Stop
-      </button>
-      <button disabled={isRunning === isPaused} onClick={togglePause}>
+      </Button>
+      <Button disabled={isRunning === isPaused} onClick={togglePause}>
         {isPaused ? 'Wznów' : 'Pauzuj'}
-      </button>
+      </Button>
       Liczba przerw: {pausesCount}
     </div>
   )

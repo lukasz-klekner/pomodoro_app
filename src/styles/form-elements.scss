@@ -7,5 +7,9 @@ input {
 
 button {
   font-size: 16px;
+  margin-top: spacing(2.5);
   margin-left: spacing(2.5);
+  padding: spacing(1.25);
+  border-radius: 20px;
+  color: white;
 }
