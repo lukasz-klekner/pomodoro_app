@@ -1,10 +1,12 @@
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
 import Button from './Button'
 
 const TimeboxEditor = ({
   isEditable,
   onConfirm,
+  onCreate,
   onTitleChange,
   onTotalTimeInMinutesChange,
   title,
@@ -36,11 +38,21 @@ const TimeboxEditor = ({
         />
       </label>
       <br />
-      <Button disabled={!isEditable} onClick={onConfirm}>
-        Zatwierdź zmiany!
+      <Button disabled={!isEditable} onClick={onConfirm || onCreate}>
+        {onConfirm ? 'Zatwierdź zmiany!' : 'Dodaj timebox!'}
       </Button>
     </div>
   )
+}
+
+TimeboxEditor.propTypes = {
+  isEditable: PropTypes.bool.isRequired,
+  onConfirm: PropTypes.func,
+  onCreate: PropTypes.func,
+  onTitleChange: PropTypes.func.isRequired,
+  onTotalTimeInMinutesChange: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  totalTimeInMinutes: PropTypes.string.isRequired,
 }
 
 export default TimeboxEditor

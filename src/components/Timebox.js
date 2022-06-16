@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 import { Card } from '@mui/material'
+import PropTypes from 'prop-types'
+
 import Button from './Button'
 
 const StyledCard = styled(Card)`
@@ -23,5 +25,12 @@ const Timebox = ({ title, totalTimeInMinutes, onDelete, onEdit }) => (
     </h3>
   </StyledCard>
 )
+
+Timebox.propTypes = {
+  title: PropTypes.string.isRequired,
+  totalTimeInMinutes: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+}
 
 export default Timebox

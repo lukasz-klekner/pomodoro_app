@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import Button from './Button'
@@ -8,7 +9,7 @@ import ProgressBar from './ProgressBar'
 let intervalId = null
 
 const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
-  const [elapsedTimeInMiliseconds, setelapsedTimeInMiliseconds] = useState(0)
+  const [elapsedTimeInMiliseconds, setElapsedTimeInMiliseconds] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [pausesCount, setPausesCount] = useState(0)
@@ -27,10 +28,10 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
     (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0
 
   const startTimer = () => {
-    if (intervalId) return
+    if (intervalId !== null) return
 
     intervalId = window.setInterval(() => {
-      setelapsedTimeInMiliseconds((prevState) => prevState + 10)
+      setElapsedTimeInMiliseconds((prevState) => prevState + 10)
     }, 10)
   }
 
@@ -51,7 +52,7 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
     setIsRunning(false)
     setIsPaused(false)
     setPausesCount(0)
-    setelapsedTimeInMiliseconds(0)
+    setElapsedTimeInMiliseconds(0)
 
     stopTimer()
   }
@@ -90,7 +91,7 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
       <ProgressBar
         big
         className={isPaused ? 'inactive' : ''}
-        color='green'
+        color='red'
         percent={progressInPercent}
       />
       <Button disabled={isEditable} onClick={onEdit}>
@@ -112,6 +113,13 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
       Liczba przerw: {pausesCount}
     </div>
   )
+}
+
+CurrentTimebox.propTypes = {
+  isEditable: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  totalTimeInMinutes: PropTypes.string.isRequired,
+  onEdit: PropTypes.func,
 }
 
 export default CurrentTimebox

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 const ProgressBar = ({
@@ -15,6 +16,7 @@ const ProgressBar = ({
   const progressBarClassNames = classNames('progress__bar', {
     'progress__bar--color-green': color === 'green',
   })
+
   return (
     <div
       className={progressClassNames}
@@ -29,6 +31,19 @@ const ProgressBar = ({
       ></div>
     </div>
   )
+}
+
+ProgressBar.defaultProps = {
+  big: false,
+  color: 'black',
+}
+
+ProgressBar.propTypes = {
+  big: PropTypes.bool,
+  className: PropTypes.string,
+  color: PropTypes.oneOf(['green', 'red', 'black']),
+  percent: PropTypes.number.isRequired,
+  trackRemaining: PropTypes.bool,
 }
 
 export default ProgressBar

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
 const StyledButton = styled.button`
@@ -11,10 +12,21 @@ const StyledButton = styled.button`
     variant === 'primary' ? 'black' : 'green'};
 `
 
-const Button = ({ children, disabled, onClick, variant = 'primary' }) => (
+const Button = ({ children, disabled, onClick, variant }) => (
   <StyledButton disabled={disabled} onClick={onClick} variant={variant}>
     {children}
   </StyledButton>
 )
+
+Button.defaultProps = {
+  variant: 'primary',
+}
+
+Button.propTypes = {
+  children: PropTypes.any.isRequired,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary']),
+}
 
 export default Button

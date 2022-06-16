@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import PropTypes from 'prop-types'
 
 const TimeboxCreator = ({ onCreate }) => {
   const titleInput = useRef()
@@ -31,6 +32,10 @@ const TimeboxCreator = ({ onCreate }) => {
       <button>Dodaj timebox!</button>
     </form>
   )
+}
+
+TimeboxCreator.propTypes = {
+  onCreate: PropTypes.func.isRequired,
 }
 
 export default TimeboxCreator

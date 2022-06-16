@@ -5,8 +5,8 @@ import TimeboxEditor from './TimeboxEditor'
 
 const EditableTimebox = () => {
   const [isEditable, setIsEditable] = useState(true)
-  const [title, setTitle] = useState('Uczę się Reacta')
-  const [totalTimeInMinutes, setTotalTimeInMinutes] = useState('')
+  const [title, setTitle] = useState('...')
+  const [totalTimeInMinutes, setTotalTimeInMinutes] = useState('0')
 
   const handleConfirm = () => setIsEditable(false)
 
