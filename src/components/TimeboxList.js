@@ -12,18 +12,30 @@ const TimeboxList = () => {
     { id: 'a3', title: 'Uczę się Tailwind CSS', totalTimeInMinutes: '10' },
   ])
 
-  const [editedTimeboxId, setEditedTimeboxId] = useState()
-  const [editedTimeboxTitle, setEditedTimeboxTitle] = useState()
+  const [addededTimeboxTitle, setAddedTimeboxTitle] = useState('')
+  const [addededTimeboxTotalTimeInMinutes, setAddedTimeboxTotalTimeInMinutes] =
+    useState('')
+
+  const [editedTimeboxId, setEditedTimeboxId] = useState('')
+  const [editedTimeboxTitle, setEditedTimeboxTitle] = useState('')
   const [editedTimeboxTotalTimeInMinutes, setEditedTimeboxTotalTimeInMinutes] =
-    useState()
+    useState('')
 
   const handleTitleChange = (event) => setEditedTimeboxTitle(event.target.value)
 
   const handleTotalTimeInMinutesChange = (event) =>
     setEditedTimeboxTotalTimeInMinutes(event.target.value)
 
-  const addTimebox = (timebox) =>
+  const handleAddedTitleChange = (event) =>
+    setAddedTimeboxTitle(event.target.value)
+
+  const handleAddedTotalTimeInMinutesChange = (event) =>
+    setAddedTimeboxTotalTimeInMinutes(event.target.value)
+
+  const addTimebox = (timebox) => {
+    console.log(timebox, 'timebox')
     setTimeboxes((prevState) => [timebox, ...prevState])
+  }
 
   const removeTimebox = (indexToRemove) =>
     setTimeboxes((prevState) =>
@@ -38,9 +50,12 @@ const TimeboxList = () => {
     )
   }
 
-  const handleCreate = ({ title, totalTimeInMinutes }) => {
-    addTimebox({ id: v4(), title, totalTimeInMinutes })
-  }
+  const handleCreate = () =>
+    addTimebox({
+      id: v4(),
+      title: addededTimeboxTitle,
+      totalTimeInMinutes: addededTimeboxTotalTimeInMinutes,
+    })
 
   const handleConfirm = () => {
     const indexToUpdate = timeboxes.findIndex(
@@ -60,7 +75,14 @@ const TimeboxList = () => {
 
   return (
     <>
-      <TimeboxEditor onCreate={handleCreate} />
+      <TimeboxEditor
+        isEditable
+        title={addededTimeboxTitle}
+        totalTimeInMinutes={addededTimeboxTotalTimeInMinutes}
+        onCreate={handleCreate}
+        onTitleChange={handleAddedTitleChange}
+        onTotalTimeInMinutesChange={handleAddedTotalTimeInMinutesChange}
+      />
       <Grid container columnSpacing={1}>
         {timeboxes.map(({ id, title, totalTimeInMinutes }, index) =>
           editedTimeboxId === id ? (
@@ -74,9 +96,8 @@ const TimeboxList = () => {
               onTotalTimeInMinutesChange={handleTotalTimeInMinutesChange}
             />
           ) : (
-            <Grid item xs={3}>
+            <Grid key={id} item xs={3}>
               <Timebox
-                key={id}
                 title={title}
                 totalTimeInMinutes={totalTimeInMinutes}
                 onDelete={() => removeTimebox(index)}
