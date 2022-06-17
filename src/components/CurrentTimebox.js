@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import Button from './Button'
 import Clock from './Clock'
 import ProgressBar from './ProgressBar'
+import { getMinutesSecondsAndMilisecondsFromDurationInSeconds } from '../utils/helpers'
 
 let intervalId = null
 
@@ -21,9 +22,14 @@ const CurrentTimebox = ({ isEditable, title, totalTimeInMinutes, onEdit }) => {
   const totalTimeInMiliseconds = Number(totalTimeInMinutes) * 60 * 1000
   const timeLeftInMiliseconds =
     totalTimeInMiliseconds - elapsedTimeInMiliseconds
-  const minutesLeft = Math.floor(timeLeftInMiliseconds / (60 * 1000))
-  const secondsLeft = Math.floor((timeLeftInMiliseconds / 1000) % 60)
-  const milisecondsLeft = Math.floor(timeLeftInMiliseconds % 1000)
+  const {
+    minutes: minutesLeft,
+    seconds: secondsLeft,
+    miliseconds: milisecondsLeft,
+  } = getMinutesSecondsAndMilisecondsFromDurationInSeconds(
+    timeLeftInMiliseconds
+  )
+
   const progressInPercent =
     (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0
 
